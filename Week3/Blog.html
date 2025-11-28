@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Responsive Blog</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .blog-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .post {
+      background: white;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      flex: 1;
+    }
+
+    .post h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .post p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    @media(max-width: 800px) {
+      .blog-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>My Tech Blog</h1>
+
+<div class="blog-container">
+
+  <div class="post">
+    <h2>Getting Started with HTML</h2>
+    <p>HTML is the base of all websites. It helps describe content using tags and basic structure.</p>
+  </div>
+
+  <div class="post">
+    <h2>Learning CSS Basics</h2>
+    <p>CSS helps to style web pages and make them look attractive. It includes colors, layouts and more.</p>
+  </div>
+
+  <div class="post">
+    <h2>JavaScript for Beginners</h2>
+    <p>JavaScript adds life and functionality to websites, making them interactive and dynamic.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

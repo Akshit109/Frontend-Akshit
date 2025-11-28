@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Fade Effect</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #loginBox {
+            width: 250px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #eee;
+            display: none;
+        }
+
+        #loginBox input {
+            width: 95%;
+            margin-bottom: 8px;
+            padding: 6px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Login Form</h2>
+
+<div style="text-align:center;">
+    <button id="showBtn">Show Login</button>
+    <button id="hideBtn">Hide Login</button>
+</div>
+
+<div id="loginBox">
+    <h3>Login</h3>
+    <input type="text" placeholder="Username"><br>
+    <input type="password" placeholder="Password"><br>
+    <button>Submit</button>
+</div>
+
+<script>
+    $("#showBtn").click(function(){
+        $("#loginBox").fadeIn(600);
+    });
+
+    $("#hideBtn").click(function(){
+        $("#loginBox").fadeOut(600);
+    });
+</script>
+
+</body>
+</html>

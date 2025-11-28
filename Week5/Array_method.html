@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Method Practice</title>
+</head>
+<body>
+
+<script>
+    var numbers = [10, 25, 40, 55, 70];
+
+    // map() – Increase each number by 5
+    var increased = numbers.map(function(num){
+        return num + 5;
+    });
+
+    document.write("<p>Map Result: " + increased + "</p>");
+
+    // filter() – Get numbers greater than 30
+    var filtered = numbers.filter(function(num){
+        return num > 30;
+    });
+
+    document.write("<p>Filter Result: " + filtered + "</p>");
+
+    // reduce() – Find total sum
+    var total = numbers.reduce(function(a, b){
+        return a + b;
+    });
+
+    document.write("<p>Reduce Result (Sum): " + total + "</p>");
+
+    // forEach() – Display each number on screen
+    document.write("<p>forEach Output:</p>");
+
+    numbers.forEach(function(num){
+        document.write(num + " ");
+    });
+</script>
+
+</body>
+</html>

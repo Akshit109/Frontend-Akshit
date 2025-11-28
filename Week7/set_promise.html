@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Server Fetch</title>
+</head>
+<body>
+
+<h2>Fetching Data...</h2>
+<p id="result"></p>
+
+<script>
+    function getDataFromServer(){
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve("Server says: Data received!");
+            }, 2000);
+        });
+    }
+
+    getDataFromServer().then(function(data){
+        document.getElementById("result").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

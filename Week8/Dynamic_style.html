@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery CSS Demo</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 120px;
+            background: lightgray;
+            margin: 30px auto;
+            padding: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        button {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">This is a sample box</div>
+
+<button id="changeStyle">Change Style</button>
+
+<script>
+    $("#changeStyle").click(function(){
+        $("#box").css({
+            "background": "yellow",
+            "color": "red",
+            "font-size": "22px",
+            "border": "3px solid black"
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Scope</title>
+</head>
+<body>
+
+<script>
+    var x = 5;
+
+    function checkScope(){
+        var x = 20;
+        document.write("Inside function: " + x + "<br>");
+    }
+
+    checkScope();
+    document.write("Outside function: " + x);
+</script>
+
+</body>
+</html>

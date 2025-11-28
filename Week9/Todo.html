@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced To-Do List</title>
+    <style>
+        body {
+            font-family: Arial;
+            width: 60%;
+            margin: 30px auto;
+        }
+        li {
+            margin: 8px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-left: 5px;
+        }
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<h2>My To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+    function addTask(){
+        var taskText = document.getElementById("taskInput").value;
+
+        if(taskText === ""){
+            alert("Please enter a task");
+            return;
+        }
+
+        var li = document.createElement("li");
+
+        // Checkbox
+        var chk = document.createElement("input");
+        chk.type = "checkbox";
+        chk.onchange = function(){
+            if(chk.checked){
+                li.classList.add("done");
+            } else {
+                li.classList.remove("done");
+            }
+        };
+        li.appendChild(chk);
+
+        // Text
+        var span = document.createElement("span");
+        span.style.marginLeft = "10px";
+        span.innerText = taskText;
+        li.appendChild(span);
+
+        // Move Up Button
+        var upBtn = document.createElement("button");
+        upBtn.innerText = "↑";
+        upBtn.onclick = function(){
+            var prev = li.previousElementSibling;
+            if(prev){
+                li.parentNode.insertBefore(li, prev);
+            }
+        };
+        li.appendChild(upBtn);
+
+        // Move Down Button
+        var downBtn = document.createElement("button");
+        downBtn.innerText = "↓";
+        downBtn.onclick = function(){
+            var next = li.nextElementSibling;
+            if(next){
+                li.parentNode.insertBefore(next, li);
+            }
+        };
+        li.appendChild(downBtn);
+
+        // Delete Button
+        var delBtn = document.createElement("button");
+        delBtn.innerText = "Delete";
+        delBtn.onclick = function(){
+            li.remove();
+        };
+        li.appendChild(delBtn);
+
+        document.getElementById("taskList").appendChild(li);
+
+        document.getElementById("taskInput").value = "";
+    }
+</script>
+
+</body>
+</html>

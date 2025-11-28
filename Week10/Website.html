@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>University Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background: #eef3fa;
+    }
+
+    h2 {
+        margin-bottom: 12px;
+    }
+
+    input, button {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    button {
+        cursor: pointer;
+        margin-left: 8px;
+    }
+
+    .results {
+        margin-top: 25px;
+        background: white;
+        padding: 20px;
+        border-radius: 6px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card:last-child {
+        border-bottom: none;
+    }
+
+    .name {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .website a {
+        color: #0c59b5;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+
+<h2>Search Universities by Country</h2>
+
+<input type="text" id="countryInput" placeholder="Enter country name..." />
+<button onclick="fetchUniversities()">Search</button>
+
+<div class="results" id="result"></div>
+
+<script>
+    function fetchUniversities() {
+        const country = document.getElementById("countryInput").value.trim();
+        const resultArea = document.getElementById("result");
+
+        if (!country) {
+            resultArea.innerHTML = "<p>Please enter a country name.</p>";
+            return;
+        }
+
+        resultArea.innerHTML = "<p>Fetching data...</p>";
+
+        fetch(`https://universities.hipolabs.com/search?country=${country}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.length === 0) {
+                    resultArea.innerHTML = "<p>No universities found.</p>";
+                    return;
+                }
+
+                let output = "";
+                data.forEach(u => {
+                    output += `
+                        <div class="card">
+                            <div class="name">${u.name}</div>
+                            <div class="state">State/Province: ${u["state-province"] ?? "N/A"}</div>
+                            <div class="website">
+                                Website: <a href="${u.web_pages[0]}" target="_blank">${u.web_pages[0]}</a>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                resultArea.innerHTML = output;
+            })
+            .catch(err => {
+                resultArea.innerHTML = "<p>Error fetching data.</p>";
+                console.error(err);
+            });
+    }
+</script>
+
+</body>
+</html>
